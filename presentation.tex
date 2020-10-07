@@ -1,0 +1,263 @@
+\documentclass[aspectratio=169,notes]{beamer}
+\usepackage{lmodern}
+\usepackage{adjustbox}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{animate}
+\usepackage{underscore}
+\usepackage{pdfpc-commands}
+\usepackage{xmpmulti}
+\usepackage{multimedia}
+\usepackage{epstopdf}
+\usepackage{bbding}
+
+\definecolor{Title}{rgb}{0.94,0.52,0.08}
+\setbeamercolor{frametitle}{bg=Title,fg=black}
+
+% footnote without number
+\makeatletter
+\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+\makeatother
+
+\usepackage{hyperref}
+\usepackage{scalerel}
+\def\thumbup{\scalerel*{\includegraphics{thumbup.png}}{O}}
+\usepackage{listings}
+\lstdefinelanguage{D}
+{
+  % list of keywords
+  morekeywords={ abstract, alias, align, asm, assert, auto, body, bool, break,
+	byte, case, cast, catch, cdouble, cent, cfloat, char, class, const,
+	continue, default, double, else, enum, export, extern, false, final, finally,
+	float, for, foreach, foreach_reverse, function, goto, idouble, if, ifloat,
+	immutable, import, in, inout, int, interface, invariant, ireal, is, lazy,
+	long, mixin, module, new, nothrow, null, out, override, package, pragma,
+	private, protected, public, pure, real, ref, return, scope, shared, short,
+	static, string, struct, super, switch, synchronized, template, this, throw,
+	true, try, typeid, typeof, ubyte, ucent, uint, ulong, union,
+	unittest, delegate, @safe, @property
+	ushort, version, void, wchar, while, with, __FILE__, __FILE_FULL_PATH__,
+	__MODULE__, __LINE__, __FUNCTION__, __PRETTY_FUNCTION__, __gshared,
+	__traits, __vector, __parameters
+  },
+  otherkeywords= { @property, @safe },
+  sensitive=false, % keywords are not case-sensitive
+  morecomment=[l]{//}, % l is for line comment
+  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+  morecomment=[s]{/+}{+/}, % s is for start and end delimiter
+  morestring=[b]" % defines that strings are enclosed in double quotes
+}
+\usepackage{color}
+\definecolor{eclipseBlue}{RGB}{42,0.0,255}
+\definecolor{eclipseGreen}{RGB}{63,127,95}
+\definecolor{eclipsePurple}{RGB}{127,0,85}
+
+% Set Language
+\lstset{
+  language={D},
+  basicstyle=\small\ttfamily, % Global Code Style
+  captionpos=b, % Position of the Caption (t for top, b for bottom)
+  extendedchars=true, % Allows 256 instead of 128 ASCII characters
+  tabsize=2, % number of spaces indented when discovering a tab 
+  columns=fixed, % make all characters equal width
+  keepspaces=true, % does not ignore spaces to fit width, convert tabs to spaces
+  showstringspaces=false, % lets spaces in strings appear as real spaces
+  breaklines=true, % wrap lines if they don't fit
+  numbers=left, % show line numbers at the left
+  numberstyle=\tiny\ttfamily, % style of the line numbers
+  commentstyle=\color{eclipseGreen}, % style of comments
+  keywordstyle=\color{eclipsePurple}, % style of keywords
+  stringstyle=\color{eclipseBlue}, % style of strings
+}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{TypeScript}{
+	keywords={break, case, catch, continue, debugger, default, delete, do, else,
+		false, from, finally, for, function, if, in, instanceof, new, null, return, switch,
+		this, throw, true, try, typeof, var, void, while, with, interface,
+		class, export, boolean, throw, implements, import, this, const, let,
+		of, =>},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	ndkeywords={},
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywordstyle=\color{darkgray}\bfseries,
+	identifierstyle=\color{black},
+	commentstyle=\color{purple}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	sensitive=true
+}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{GraphQL}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    breaklines=true,
+	keywords={type, schema, mutation, subscription, __type, __schema, kind,
+		on, fragment, query},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    breaklines=true,
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+\usepackage{tikz}
+\usetikzlibrary{shadows,calc}
+\usepackage{xkeyval}
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+\usetheme{metropolis}					 % Use metropolis theme
+\usepackage[
+    backend=biber,
+	sorting=none,
+    url=true 
+]{biblatex}
+\addbibresource{biblio.bib}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\title{D The functional programming language\\nobody is talking about}
+\date{\today}
+\author{Robert Schadek}
+\begin{document}
+	\maketitle
+
+	\begin{frame}[fragile]{D is a functional programming language}
+		\begin{center}
+			{\large What makes D a functional programming language}
+		\end{center}
+	\end{frame}
+
+	\begin{frame}{C the functional programming language}
+		\begin{itemize}
+			\item D is a $\approx$ superset of C
+			\item C is a functional programming language
+		\end{itemize}
+	\end{frame}
+
+	\section{Proof by example}
+	\begin{frame}[fragile]{High order functions}
+		\lstinputlisting[language=C,basicstyle=\normalsize\ttfamily]{chof.c}
+	\end{frame}
+
+	\begin{frame}[fragile]{High order functions}
+		\lstinputlisting[language=C,basicstyle=\normalsize\ttfamily]{chof2.c}
+	\end{frame}
+
+	\begin{frame}[fragile]{High order functions}
+		\lstinputlisting[language=D,basicstyle=\normalsize\ttfamily]{dhof.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{High order functions}
+		\lstinputlisting[language=D,basicstyle=\normalsize\ttfamily]{dhof2.d}
+	\end{frame}
+
+	\section{Why should you care}
+	\begin{frame}[fragile]{Why should you care about D}
+\begin{center}
+\begin{tikzpicture}[
+	level 1/.style={sibling distance=3cm},
+	level 2/.style={sibling distance=1cm},
+	level 3/.style={sibling distance=0.5cm},
+	%every node/.style = {shape=circle,
+    %draw, align=center,minimum width=0.75cm,
+    %top color=white, bottom color=blue!20}
+]
+]
+	\node[] at (0.0,2.0) (0) {D};
+	\node[] at (2.0,0.0) (1) {Functional};
+	\node[] at (-2.0,0.0) (2) {Testing};
+	\node[] at (0.0,-2.0) (3) {Correctness};
+
+	\draw[-,line width=0.5mm,black] (0) -- (1);
+	\draw[-,line width=0.5mm,black] (1) -- (2);
+	\draw[-,line width=0.5mm,black] (0) -- (2);
+	\draw[-,line width=0.5mm,black] (0) -- (3);
+	\draw[-,line width=0.5mm,black] (2) -- (3);
+	\draw[-,line width=0.5mm,black] (1) -- (3);
+		\end{tikzpicture}
+\end{center}
+	\end{frame}
+
+	\begin{frame}[fragile]{Why should you care}
+		\lstinputlisting[firstline=6,lastline=18,language=D,basicstyle=\small\ttfamily]{rng2.d}
+	\end{frame}
+
+	\section{Ranges Ranges Ranges}
+	\begin{frame}[fragile]{Ranges Ranges Ranges}
+		\begin{center}
+			A thing \lstinline@foreach@ can iterate
+		\end{center}
+	\end{frame}
+
+	\begin{frame}[fragile]{Ranges}
+		\lstinputlisting[firstline=3,lastline=18,language=D,basicstyle=\small\ttfamily]{rng1.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Ranges}
+		\lstinputlisting[firstline=20,lastline=24,language=D,basicstyle=\small\ttfamily]{rng1.d}
+		\pause
+		\lstinputlisting[firstline=26,lastline=32,language=D,basicstyle=\small\ttfamily]{rng1.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Ranges}
+		\begin{itemize}
+			\item Input Range
+				\pause
+			\item Forwared Range
+			\item Bidirectional Range
+			\item Random Access Range
+			\item Infinite Range
+		\end{itemize}\mbox{}\\[1cm]
+		\pause
+		\lstinputlisting[firstline=35,lastline=37,language=D,basicstyle=\small\ttfamily]{rng1.d}
+	\end{frame}
+
+	\section{To be continued}
+\end{document}
