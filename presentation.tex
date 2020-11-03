@@ -246,18 +246,101 @@
 		\lstinputlisting[firstline=26,lastline=32,language=D,basicstyle=\small\ttfamily]{rng1.d}
 	\end{frame}
 
-	\begin{frame}[fragile]{Ranges}
+	\begin{frame}[fragile]{Range types}
 		\begin{itemize}
 			\item Input Range
 				\pause
 			\item Forwared Range
+			\begin{itemize}
+				\item \lstinline@save()@
+			\end{itemize}
 			\item Bidirectional Range
+			\begin{itemize}
+				\item \lstinline@back@
+				\item \lstinline@popBack@
+			\end{itemize}
 			\item Random Access Range
+			\begin{itemize}
+				\item \lstinline@[]@
+			\end{itemize}
 			\item Infinite Range
+			\begin{itemize}
+				\item \lstinline@enum empty = false;@
+			\end{itemize}
 		\end{itemize}\mbox{}\\[1cm]
-		\pause
+	\end{frame}
+	\begin{frame}[fragile]{Ranges types, practically}
 		\lstinputlisting[firstline=35,lastline=37,language=D,basicstyle=\small\ttfamily]{rng1.d}
 	\end{frame}
 
-	\section{To be continued}
+	\begin{frame}[fragile]{Ranges}
+		\lstinputlisting[firstline=40,lastline=54,language=D,basicstyle=\small\ttfamily]{rng1.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Ranges}
+		\lstinputlisting[firstline=56,lastline=63,language=D,basicstyle=\small\ttfamily]{rng1.d}
+	\end{frame}
+
+	\section{Testing}
+	\begin{frame}[fragile]{Testing}
+		\begin{center}
+		\Large Not tests $=$ wrong
+		\end{center}
+	\end{frame}
+
+	\begin{frame}[fragile]{Testing in D}
+		\begin{itemize}
+			\item D has in-build unittesting
+			\item \lstinline@unittest { }@
+			\item D has in-build test coverage analysis
+			\item 100\% is a terrible metric, but still the best we have
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=1,lastline=8,language=D,basicstyle=\small\ttfamily]{cov.d}
+		dmd -main -cov -unittest -run cov.d
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=1,lastline=8,language=D,basicstyle=\small\ttfamily]{cov.lst}
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=10,lastline=19,language=D,basicstyle=\small\ttfamily]{cov.d}
+		dmd -main -cov -unittest -run cov.d
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=10,lastline=19,language=D,basicstyle=\small\ttfamily]{cov.lst}
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=21,lastline=27,language=D,basicstyle=\small\ttfamily]{cov.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=21,lastline=27,language=D,basicstyle=\small\ttfamily]{cov.lst}
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=29,lastline=42,language=D,basicstyle=\small\ttfamily]{cov.lst}
+	\end{frame}
+
+	\begin{frame}[fragile]{Coverage analysis}
+		\lstinputlisting[firstline=29,lastline=42,language=D,basicstyle=\small\ttfamily]{cov.lst}
+	\end{frame}
+
+	\section{Exceptions}
+	
+
+	\section{State}
+
+	\begin{frame}[fragile]{State}
+		\begin{itemize}
+			\item Many programs are not just input, map, output
+			\item Most programs have some sort of state
+		\end{itemize}
+	\end{frame}
+
 \end{document}
