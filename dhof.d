@@ -1,4 +1,4 @@
-int apply(int function(int) fun
+int apply(int function(int) pure fun
 		, int value) pure 
 {
 	return fun(value);

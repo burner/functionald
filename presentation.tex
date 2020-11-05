@@ -336,11 +336,8 @@
 	\end{frame}
 
 	\begin{frame}[fragile]{Coverage analysis}
+		\mbox{}\\[2cm]
 		\lstinputlisting[firstline=21,lastline=27,language=D,basicstyle=\small\ttfamily]{cov.lst}
-	\end{frame}
-
-	\begin{frame}[fragile]{Coverage analysis}
-		\lstinputlisting[firstline=29,lastline=42,language=D,basicstyle=\small\ttfamily]{cov.lst}
 	\end{frame}
 
 	\begin{frame}[fragile]{Coverage analysis}
@@ -436,7 +433,7 @@
 	\section{Encore}
 
 	\begin{frame}[fragile]{Dead lock free multi Mutex Systems}
-		Deadlock Recipes:\\
+		Deadlock Recipe:\\
 		\begin{itemize}
 			\item Mutual exclusion
 			\item Hold and wait
@@ -445,16 +442,18 @@
 		\end{itemize}
 	\end{frame}
 
-	\begin{frame}[fragile]{Anti Dead lock}
+	\begin{frame}[fragile]{Anti Dead lock: Un-sorted}
 		\includestandalone[width=0.4\textwidth]{dl}
-		\hfill{}
+	\end{frame}
+
+	\begin{frame}[fragile]{Anti Dead lock: Sorted}
 		\includestandalone[width=0.4\textwidth]{dl2}
 	\end{frame}
 
 	\begin{frame}[fragile]{Anti Dead lock}
-		\lstinputlisting[firstline=1,lastline=5,language=D,basicstyle=\small\ttfamily]{deadlock.d}
+		\lstinputlisting[firstline=1,lastline=7,language=D,basicstyle=\small\ttfamily]{deadlock.d}
 		\pause
-		\lstinputlisting[firstnumber=6,firstline=6,lastline=13,language=D,basicstyle=\small\ttfamily]{deadlock.d}
+		\lstinputlisting[firstnumber=8,firstline=8,lastline=15,language=D,basicstyle=\small\ttfamily]{deadlock.d}
 	\end{frame}
 
 	\section{Out of Slides}

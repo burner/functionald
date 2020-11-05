@@ -1,0 +1,43 @@
+ |int fun(bool b) {
+4|  return b ? 1 : 0;
+ |}
+ |
+ |unittest {
+1|  assert(fun(true) == 1);
+1|  assert(fun(false) == 0);
+ |}
+ |
+ |int fun2(bool b) {
+2|  return b
+1|    ? 1
+1|    : 0;
+ |}
+ |
+ |unittest {
+1|  assert(fun2(true) == 1);
+1|  assert(fun2(false) == 0);
+ |}
+ |
+ |bool complexCondition(int a, int b) {
+4|  return a == 10 && b == 20 || a > 20 || b < 5 ? true : false;
+ |}
+ |
+ |unittest {
+1|  assert(complexCondition(1,2));
+ |}
+ |
+ |bool complexCondition2(int a, int b) {
+3|  return a == 10 
+1|      && b == 20 
+2|      || a > 20 
+2|      || b < 5 
+2|    ? true 
+1|    : false;
+ |}
+ |
+ |unittest {
+1|  assert( complexCondition2(1,2));
+1|  assert( complexCondition2(10,20));
+1|  assert(!complexCondition2(1,50));
+ |}
+cov.d is 100% covered
