@@ -1,12 +1,12 @@
-int addOne(int a) {
+int addOne(int a) pure {
 	return a + 1;
 }
 
-int addTwo(int a) {
+int addTwo(int a) pure {
 	return a + 2;
 }
 
-int function(int) apply(int value) {
+int function(int) apply(int value) pure {
 	return value == 1
 		? &addOne
 		: &addTwo;

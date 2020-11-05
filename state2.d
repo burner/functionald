@@ -7,7 +7,7 @@ auto deepCopy(T)(ref const(T) old) {
 	} else static if(isArray!UQ) {
 		alias ET = Unqual!(ElementEncodingType!T);
 		ET[] ret;
-		foreach(it; old) {
+		foreach(ref it; old) {
 			ret ~= deepCopy!(ET)(it);
 		}
 		return ret;
@@ -33,28 +33,41 @@ struct State {
 	Group[] groups;
 }
 
-State createGroup(ref const State old, string name) {
+State createGroup(ref const State old
+		, string name) 
+{
 	Group ng = Group
 		( old.groups.empty
 		  ? 1
-		  : old.groups.map!(g => g.id).maxElement
+		  : old.groups
+		  	.map!(g => g.id)
+			.maxElement
 		, name
 		, []
 		);
+
 	State neu = old.deepCopy();
 	neu.groups ~= ng;
 	return neu;
 }
 
-Nullable!(const(long)) findGroup(ref const(State) old, string name) {
-	auto f = old.groups.find!(g => g.name == name);
+Nullable!(const(long)) findGroup(
+		ref const(State) old
+		, string name) 
+{
+	auto f = old.groups
+		.find!(g => g.name == name);
+
 	return f.empty
-		? Nullable!(const(long)).init
+		? typeof(return).init
 		: nullable(f.front.id);
 }
 
-State addMember(ref const State old, long groupId, long memId) {
-	auto g = old.groups.countUntil!(g => g.id == groupId);
+State addMember(ref const State old
+		, long groupId, long memId) 
+{
+	auto g = old.groups
+		.countUntil!(g => g.id == groupId);
 	enforce(g != -1, "Group not found");
 
 	State neu = old.deepCopy();
@@ -68,7 +81,8 @@ unittest {
 	State s;
 	s = s.createGroup("D_Users");
 
-	Nullable!(const(long)) gId = s.findGroup("D_Users");
+	Nullable!(const(long)) gId = s
+		.findGroup("D_Users");
 
 	s = s.addMember(gId.get(), 1);
 }

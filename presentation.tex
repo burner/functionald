@@ -10,6 +10,7 @@
 \usepackage{multimedia}
 \usepackage{epstopdf}
 \usepackage{bbding}
+\usepackage{standalone}
 
 \definecolor{Title}{rgb}{0.94,0.52,0.08}
 \setbeamercolor{frametitle}{bg=Title,fg=black}
@@ -281,6 +282,22 @@
 		\lstinputlisting[firstline=56,lastline=63,language=D,basicstyle=\small\ttfamily]{rng1.d}
 	\end{frame}
 
+	\begin{frame}[fragile]{Ranges}
+		\lstinputlisting[firstline=65,lastline=79,language=D,basicstyle=\small\ttfamily]{rng1.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Ranges}
+		\lstinputlisting[firstline=81,lastline=90,language=D,basicstyle=\small\ttfamily]{rng1.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Uniform functional call syntax (UFCS)}
+		\lstinputlisting[firstline=1,lastline=12,language=D,basicstyle=\small\ttfamily]{ufcs.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Ranges}
+		\lstinputlisting[firstline=6,lastline=18,language=D,basicstyle=\small\ttfamily]{rng2.d}
+	\end{frame}
+
 	\section{Testing}
 	\begin{frame}[fragile]{Testing}
 		\begin{center}
@@ -308,7 +325,6 @@
 
 	\begin{frame}[fragile]{Coverage analysis}
 		\lstinputlisting[firstline=10,lastline=19,language=D,basicstyle=\small\ttfamily]{cov.d}
-		dmd -main -cov -unittest -run cov.d
 	\end{frame}
 
 	\begin{frame}[fragile]{Coverage analysis}
@@ -332,15 +348,114 @@
 	\end{frame}
 
 	\section{Exceptions}
-	
+	{
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{elephant.png}}
+	\begin{frame}[fragile]{Elephant in the Room}
+	\end{frame}
+	}
+
+	\begin{frame}[fragile]{Elephant in the Room}
+		\lstinputlisting[firstline=4,lastline=19,language=D,basicstyle=\small\ttfamily]{exp.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{handle Exceptions}
+		\lstinputlisting[firstline=22,lastline=27,language=D,basicstyle=\small\ttfamily]{exp.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{try catch}
+		\lstinputlisting[firstline=33,lastline=45,language=D,basicstyle=\small\ttfamily]{exp.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{try catch nullable}
+		\lstinputlisting[firstline=52,lastline=66,language=D,basicstyle=\small\ttfamily]{exp.d}
+	\end{frame}
 
 	\section{State}
 
 	\begin{frame}[fragile]{State}
 		\begin{itemize}
-			\item Many programs are not just input, map, output
+			\item Most programs are not just input, map, output
 			\item Most programs have some sort of state
 		\end{itemize}
 	\end{frame}
 
+	\begin{frame}[fragile]{State: The model}
+		\lstinputlisting[firstline=3,lastline=11,language=D,basicstyle=\small\ttfamily]{state.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State: \lstinline{createGroup}}
+		\lstinputlisting[firstline=13,lastline=27,language=D,basicstyle=\small\ttfamily]{state.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State: \lstinline{findGroup}}
+		\lstinputlisting[firstline=29,lastline=39,language=D,basicstyle=\small\ttfamily]{state.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State: \lstinline{addMember}}
+		\lstinputlisting[firstline=41,lastline=53,language=D,basicstyle=\small\ttfamily]{state.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State: Usage}
+		\lstinputlisting[firstline=55,lastline=63,language=D,basicstyle=\small\ttfamily]{state.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State Two: \lstinline{createGroup}}
+		\lstinputlisting[firstline=36,lastline=52,language=D,basicstyle=\small\ttfamily]{state2.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State Two: \lstinline{addMember}}
+		\lstinputlisting[firstline=66,lastline=78,language=D,basicstyle=\small\ttfamily]{state2.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State Two: \lstinline{deepCopy} 1/2}
+		\lstinputlisting[firstline=3,lastline=13,language=D,basicstyle=\small\ttfamily]{state2.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{State Two: \lstinline{deepCopy} 2/2}
+		\lstinputlisting[firstline=14,lastline=24,language=D,basicstyle=\small\ttfamily]{state2.d}
+	\end{frame}
+
+	\begin{frame}[fragile]{Commercial break}
+		\begin{center}
+			{\Large Symmetry Investments}
+		\end{center}
+	\end{frame}
+
+	\section{Conclusion}
+	\begin{frame}[fragile]{Takeaways}
+		\begin{itemize}
+			\item \lstinline{if} statements considered harmful
+			\item learn phobos/std by heart
+			\item when you think exception \lstinline{goto} Nullable
+			\item no tests $=$ bugs
+		\end{itemize}
+	\end{frame}
+
+	\section{The End}
+
+	\section{Encore}
+
+	\begin{frame}[fragile]{Dead lock free multi Mutex Systems}
+		Deadlock Recipes:\\
+		\begin{itemize}
+			\item Mutual exclusion
+			\item Hold and wait
+			\item No preemption
+			\item Circular wait
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}[fragile]{Anti Dead lock}
+		\includestandalone[width=0.4\textwidth]{dl}
+		\hfill{}
+		\includestandalone[width=0.4\textwidth]{dl2}
+	\end{frame}
+
+	\begin{frame}[fragile]{Anti Dead lock}
+		\lstinputlisting[firstline=1,lastline=5,language=D,basicstyle=\small\ttfamily]{deadlock.d}
+		\pause
+		\lstinputlisting[firstnumber=6,firstline=6,lastline=13,language=D,basicstyle=\small\ttfamily]{deadlock.d}
+	\end{frame}
+
+	\section{Out of Slides}
 \end{document}

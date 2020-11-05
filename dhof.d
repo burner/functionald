@@ -1,10 +1,10 @@
 int apply(int function(int) fun
-		, int value) 
+		, int value) pure 
 {
 	return fun(value);
 }
 
-int addOne(int a) {
+int addOne(int a) pure {
 	return a + 1;
 }
 

@@ -10,11 +10,15 @@ struct State {
 	Group[] groups;
 }
 
-State createGroup(State old, string name) {
+State createGroup(State old
+		, string name) 
+{
 	Group ng = Group
 		( old.groups.empty
 		  ? 1
-		  : old.groups.map!(g => g.id).maxElement
+		  : old.groups
+		  	.map!(g => g.id)
+			.maxElement
 		, name
 		, []
 		);
@@ -22,15 +26,25 @@ State createGroup(State old, string name) {
 	return old;
 }
 
-Nullable!(const(long)) findGroup(ref const(State) old, string name) {
-	auto f = old.groups.find!(g => g.name == name);
+Nullable!(const(long)) findGroup(
+		ref const(State) old
+		, string name) 
+{
+	auto f = old.groups
+		.find!(g => g.name == name);
+
 	return f.empty
-		? Nullable!(const(long)).init
+		? typeof(return).init
 		: nullable(f.front.id);
 }
 
-State addMember(State old, long groupId, long memId) {
-	auto g = old.groups.countUntil!(g => g.id == groupId);
+State addMember(State old
+		, long groupId
+		, long memId) 
+{
+	auto g = old.groups
+		.countUntil!(g => g.id == groupId);
+
 	enforce(g != -1, "Group not found");
 	old.groups[g].members ~= memId;
 	old.groups[g].members = old.groups[g]
@@ -42,7 +56,8 @@ unittest {
 	State s;
 	s = s.createGroup("D_Users");
 
-	Nullable!(const(long)) gId = s.findGroup("D_Users");
+	Nullable!(const(long)) gId = s
+		.findGroup("D_Users");
 
 	s = s.addMember(gId.get(), 1);
 }

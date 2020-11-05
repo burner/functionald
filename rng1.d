@@ -61,3 +61,30 @@ unittest {
 	auto tt = Range(0, 10).map!(it => it * 2);
 	assert(tt.equal([0, 2, 4, 6, 8, 10, 12, 14, 16, 18]));
 }
+
+struct Map2(alias fun, R) {
+	R range;
+
+	@property int front() {
+		return fun(this.range.front);
+	}
+
+	@property bool empty() const {
+		return this.range.empty;
+	}
+
+	void popFront() {
+		this.range.popFront();
+	}
+}
+
+Map2!(fun,R) map2(alias fun, R)(R r) {
+	return Map2!(fun,R)(r);
+}
+
+unittest {
+	import std.range : iota;
+
+	auto tt = iota(0, 10).map2!(it => it * 2);
+	assert(tt.equal([0, 2, 4, 6, 8, 10, 12, 14, 16, 18]));
+}

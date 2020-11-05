@@ -27,18 +27,6 @@ unittest {
 		.array;
 }
 
-struct Exp2 {
-	@property int front() nothrow {
-		return 0;
-	}
-
-	@property bool empty() { 
-		return false;
-	}
-
-	void popFront() { }
-}
-
 unittest {
 	import std.conv : to;
 	import std.typecons : nullable, Nullable;
